@@ -1,5 +1,9 @@
 When(/^I navigate to the checkout page$/) do
-  pending
+  on(DetailsPage).view_details()
+  on(PuppyDetailsPage).open_adoption_page
+  on(PuppyItemsPage).loaded?
+  on(PuppyItemsPage).complete_adoption
+  on(CheckoutPage).loaded?
 end
 
 Given(/^I am on the puppy adoption site$/) do
@@ -29,10 +33,26 @@ end
 
 Then(/^I should see the following payment options:$/) do |table|
   # table is a table.hashes.keys # => [:pay_type]
-  pending
+  table.hashes .each do |hsh|
+    on(CheckoutPage).pay_type_options.should include hsh['pay_type']
+    end
 end
 
 When(/^I complete the adoption of a puppy$/) do
-  pending
+  on(DetailsPage).view_details()
+  on(PuppyDetailsPage).open_adoption_page
+  on(PuppyItemsPage).loaded?
+  on(PuppyItemsPage).complete_adoption
+  on(CheckoutPage).loaded?
+  on(CheckoutPage).checkout()
 end
+
+# When (/^I complete the adoption for puppy "([^"]*)" with field "([^"]*)" with value "([^"]*)"$/) do |puppyName, checkoutField, checkoutValue|
+#   on(DetailsPage).view_details(puppyName)
+#   on(PuppyDetailsPage).open_adoption_page
+#   on(PuppyItemsPage).loaded?
+#   on(PuppyItemsPage).complete_adoption
+#   on(CheckoutPage).loaded?
+#   on(CheckoutPage).checkout()
+# end
 

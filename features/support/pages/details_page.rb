@@ -9,7 +9,7 @@ class DetailsPage
     case puppy_name
       when nil
         #primero de la lista
-        view_detail_buttons.first.click
+        view_detail_buttons_elements.first.click
       else
         #escoger el valor de puppy_name
         xpath_value = "//div[@class='puppy_list']//div[@class='name']/h3[text()='#{puppy_name}']/parent::div/following-sibling::div[@class='view']//input"

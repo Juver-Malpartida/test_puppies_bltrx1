@@ -32,4 +32,8 @@ class CheckoutPage
     place_order
   end
 
+  def pay_type_options()
+    pay_type_element.options.collect {|option| option.text}
+  end
+
 end
